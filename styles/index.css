@@ -1,0 +1,284 @@
+html {
+    background-color: #252935;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0
+}
+
+.content {
+    background-image: url('../img/macos-monterey-wwdc-21-stock-5k-6016x6016-5584.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    display: flex;
+
+}
+
+.loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: 1s;
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    background-color: #252935;
+    z-index: 10;
+
+}
+
+.loadingContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+.loadingTitle {
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    background-color: none;
+    font-weight: 600;
+    font-size: calc(10px + 5vmin);
+    transition: 1s;
+
+}
+
+.loadingBar {
+    width: 200px;
+    height: 10px;
+    margin-top: 20px;
+    border-radius: 20px;
+    background-color: #434A62;
+    transition: 1s;
+
+}
+
+.loadingBarFill {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    margin-top: -10px;
+    border-radius: 20px;
+    background-color: #53ABEB;
+    transition: 0.5s;
+}
+
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+
+    40% {
+        opacity: 1;
+    }
+
+    60% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+.cmdContainer {
+    display: flex;
+    flex-direction: column;
+    background-color: black;
+    overflow: hidden;
+    width: 80vw;
+    height: 80vh;
+    align-items: center;
+    border-radius: 2vh;
+    filter: drop-shadow(0px 6px 34px rgba(0, 0, 0, 0.5));
+    transition: .5s;
+    margin-bottom: 50px;
+}
+
+.cmdContainerCollapsed1 {
+    display: flex;
+    flex-direction: column;
+    background-color: black;
+    overflow: hidden;
+    width: 80vw;
+    height: 60px;
+    align-items: center;
+    border-top-left-radius: 2vh;
+    border-top-right-radius: 2vh;
+    filter: drop-shadow(0px 6px 34px rgba(0, 0, 0, 0.5));
+    transition: .5s;
+    margin-bottom: 50px;
+}
+
+.cmdContainerCollapsed2 {
+    display: flex;
+    flex-direction: column;
+    background-color: black;
+    overflow: hidden;
+    width: 0vw;
+    height: 0vh;
+    align-items: center;
+    border-radius: 2vh;
+    filter: drop-shadow(0px 6px 34px rgba(0, 0, 0, 0.5));
+    transition: .5s;
+    margin-bottom: 50px;
+}
+
+.cmdContainerClosed {
+    display: flex;
+    flex-direction: column;
+    background-color: black;
+    overflow: hidden;
+    width: 0vw;
+    height: 0vh;
+    align-items: center;
+    border-radius: 2vh;
+    filter: drop-shadow(0px 6px 34px rgba(0, 0, 0, 0.5));
+    transition: .5s;
+    margin-bottom: 50px;
+}
+
+.cmdHeader {
+    display: flex;
+    flex-direction: row;
+    background-color: #EDEDED;
+    width: 100%;
+    height: 30px;
+    border-top-left-radius: 2vh;
+    border-top-right-radius: 2vh;
+    align-items: center;
+    justify-content: center;
+}
+
+.buttons {
+    display: flex;
+    position: absolute;
+    left: 10px;
+}
+
+.btn1 {
+    background-color: #FF8383;
+    border-radius: 1000px;
+    height: 12px;
+    width: 12px;
+    cursor: pointer;
+}
+
+.btn2 {
+    background-color: #FFCE70;
+    border-radius: 1000px;
+    height: 12px;
+    width: 12px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.btn3 {
+    background-color: #6FE882;
+    border-radius: 1000px;
+    height: 12px;
+    width: 12px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.cmdTitle {
+    color: #000;
+    font-family: 'Poppins', sans-serif;
+    background-color: none;
+    font-weight: 300;
+    font-size: calc(5px + 1vmin);
+}
+
+.cmdText {
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+    margin-top: 2%;
+    transform: .5s;
+}
+
+.line {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.fixedText {
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    background-color: none;
+    font-weight: 300;
+    margin-right: 5px;
+    font-size: calc(5px + 1vmin);
+}
+
+.dynamicText {
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    background-color: none;
+    font-weight: 300;
+    font-size: calc(5px + 1vmin);
+}
+
+.cursor {
+    height: 15px;
+    width: 1.5px;
+    background-color: white;
+    border-radius: 20px;
+    animation: blink .6s linear infinite alternate;
+}
+
+.taskBar {
+    position: absolute;
+    bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    background-color: #EDEDED10;
+    border-radius: 10px;
+    width: 80vw;
+    border-style: solid;
+    border-color: #EDEDED70;
+    border-width: 1px;
+    transition: .5s;
+}
+
+.logoContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.terminal {
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+}
+
+.dot {
+    background-color: #EDEDED70;
+    width: 5px;
+    height: 5px;
+    border-radius: 1000px;
+    margin-bottom: 2px;
+}
