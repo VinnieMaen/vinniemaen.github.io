@@ -5,27 +5,31 @@ let curLine = 0;
 let prevCurline = -1;
 let curLineLength = 0;
 let curLoading = 0;
+let inputString = "";
+let canType = false;
+let isTyping = false;
 
 let typeInterval;
 let lineInterval;
 
 let fixed = "Vincent@Portfolio ~ %";
 
-let lines = [
-    "python3 welcomeScript.py",
-    "Hello! My Name is Vincent. I am a 19 years old fullstack developer studying Industrial Engineering Computer Science at the KU Leuven.",
-    "node skills.js",
-    "I have experience in the following programming languages/frameworks: Java, ReactJS, React-Native, C++, Python, HTML + CSS and Vanilla JS.",
-    "passedProjects.exe",
-    "I have worked on a lot of projects in the passed which were Vinity Sneaker App, WavesAIO ReactJS Sneaker Bot, Discord Bots, Scraper Tools and my own Private Bot ILA.",
-    "clear",
-    "contact.jar",
-    "Discord: VinnieMaen#1111 | Twitter: @VinnieMaenDev | GitHub: VinnieMaen",
-    "exit"
-]
+let functions = {
+    help: "The following commands are available: welcome | skills | projects | contact | clear | exit",
+    welcome: "Hello! My Name is Vincent. I am a 19 years old fullstack developer studying Industrial Engineering Computer Science at the KU Leuven.",
+    skills: "I have experience in the following programming languages/frameworks: Java, ReactJS, React-Native, C++, Python, HTML + CSS and Vanilla JS.",
+    projects: "I have worked on a lot of projects in the passed which were Vinity Sneaker App, WavesAIO ReactJS Sneaker Bot, Discord Bots, Scraper Tools and my own Private Bot ILA.",
+    contact: "Discord: VinnieMaen#1111 | Twitter: @VinnieMaenDev | GitHub: VinnieMaen",
+    clear: "clear",
+    exit: "exit"
+}
 
 function randomIntFromInterval(min, max) { // min and max included 
     return Math.floor(Math.random() * (max - min + 1) + min)
+}
+
+function isLetter(str) {
+    return str.length === 1 && str.match(/[a-z]/i);
 }
 
 function close() {
@@ -45,78 +49,88 @@ function close() {
     }, 500);
 }
 
-function startWrite() {
-    lineInterval = setInterval(() => {
-        if (prevCurline !== curLine) {
-            let tag = document.createElement("div");
-            let dynamicText = document.createElement("a");
-            let fixedText = document.createElement("a");
-            let cursor = document.createElement("div");
+function startWrite(forCommand, text) {
+    isTyping = true;
 
-            tag.className = "line";
-            tag.id = curLine.toString();
+    let tag = document.createElement("div");
+    let dynamicText = document.createElement("a");
+    let fixedText = document.createElement("a");
+    let cursor = document.createElement("div");
 
-            dynamicText.className = "dynamicText";
-            dynamicText.textContent = "";
+    tag.className = "line";
 
-            fixedText.className = "fixedText";
-            fixedText.textContent = fixed;
+    dynamicText.className = "dynamicText";
+    dynamicText.textContent = "";
 
-            cursor.className = "cursor";
-            cursor.id = "cursor";
+    fixedText.className = "fixedText";
+    fixedText.textContent = fixed;
 
-            if (curLine % 2 == 0) tag.appendChild(fixedText);
+    cursor.className = "cursor";
+    cursor.id = "cursor";
 
-            tag.appendChild(dynamicText);
-            tag.appendChild(cursor);
+    if (forCommand) tag.appendChild(fixedText);
 
-            cmdText.appendChild(tag);
+    tag.appendChild(dynamicText);
+    tag.appendChild(cursor);
 
-            prevCurline = curLine;
-            document.getElementsByClassName("cursor")[0].remove()
+    cmdText.appendChild(tag);
 
-            setTimeout(() => {
-                typeInterval = setInterval(() => {
-                    try {
-                        let lineElement = document.getElementById(curLine);
+    document.getElementsByClassName("cursor")[0].remove()
 
-                        if (lineElement.getElementsByClassName("dynamicText")[0].innerText.length < lines[curLine].length) {
-                            curLineLength++;
-                            lineElement.getElementsByClassName("dynamicText")[0].innerText = lines[curLine].substring(0, curLineLength)
+    typeInterval = setInterval(() => {
+        try {
+            if (document.getElementsByClassName("dynamicText")[document.getElementsByClassName("dynamicText").length - 1].innerText.length < text.length) {
+                curLineLength++;
+                document.getElementsByClassName("dynamicText")[document.getElementsByClassName("dynamicText").length - 1].innerText = text.substring(0, curLineLength)
 
-                        } else {
+            } else {
 
-                            if (curLine % 2 != 0) {
-                                let tag = document.createElement("div");
+                if (!forCommand) {
+                    let tag = document.createElement("div");
 
-                                tag.className = "line";
-                                tag.innerText = "\n"
-                                cmdText.appendChild(tag);
-                            }
+                    tag.className = "line";
+                    tag.innerText = "\n"
+                    cmdText.appendChild(tag);
+                }
 
-                            if (lines[curLine] == "clear") {
-                                cmdText.innerHTML = `<div id="cursor" class="cursor"></div>`;
-                                lines.splice(curLine, 1)
-                                curLine--;
-                                prevCurline = curLine - 2
+                curLineLength = 0;
+                if (forCommand) canType = true;
+                isTyping = false;
+                clearInterval(typeInterval)
+            }
 
-                            } else if (lines[curLine] == "exit") {
-                                return close();
-                            }
-
-                            curLine++;
-                            curLineLength = 0;
-                            clearInterval(typeInterval)
-
-                        }
-                    } catch (error) {
-                        clearInterval(typeInterval)
-                        clearInterval(lineInterval)
-                    }
-                }, curLine % 2 == 0 ? 100 : 10)
-            }, curLine % 2 == 0 && curLine != 0 ? 5000 : 0)
+        } catch (error) {
+            clearInterval(typeInterval)
         }
-    }, 100)
+    }, 10)
+}
+
+function execute(inputString) {
+    let printText = functions[inputString.toLowerCase()];
+    if (!printText) {
+        startWrite(false, "Command " + inputString + " not found");
+        let int = setInterval(() => {
+            if (!isTyping) {
+                clearInterval(int);
+                startWrite(true, "");
+            }
+        })
+
+    } else {
+        if (inputString == "exit") return close();
+        if (inputString == "clear") {
+            cmdText.innerHTML = `<div id="cursor" class="cursor"></div>`;
+            return startWrite(true, "");
+        }
+
+        startWrite(false, printText);
+        let int = setInterval(() => {
+            if (!isTyping) {
+                clearInterval(int);
+                startWrite(true, "");
+            }
+        })
+    }
 }
 
 let loadingInterval = setInterval(() => {
@@ -124,9 +138,10 @@ let loadingInterval = setInterval(() => {
         clearInterval(loadingInterval);
         document.getElementsByClassName("loading")[0].style.visibility = "hidden"
         document.getElementsByClassName("loading")[0].style.opacity = 0
+        startWrite(false, "Type help to get started!");
 
         setTimeout(() => {
-            startWrite();
+            startWrite(true, "")
         }, 1000);
         curLoading = 0;
     } else {
@@ -160,13 +175,39 @@ document.getElementById("terminal").addEventListener("click", () => {
     setTimeout(() => {
         cmdContainer.className = "cmdContainer"
         if (cl == "cmdContainerClosed") {
+            startWrite(false, "Type help to get started!");
+
             setTimeout(() => {
-                startWrite()
-            }, 500)
+                startWrite(true, "")
+            }, 1000);
         }
     }, 500);
 })
 
 document.getElementById("close").addEventListener("click", () => {
-    close()
+    close();
 })
+
+document.addEventListener("keydown", (key) => {
+    if (!canType) return;
+
+    if (key.key == "Enter") {
+        if (inputString == "") return;
+
+        canType = false;
+        execute(inputString);
+        return inputString = "";
+
+    } else if (key.key == "Backspace") {
+        inputString = inputString.slice(0, -1);
+        document.getElementsByClassName("dynamicText")[document.getElementsByClassName("dynamicText").length - 1].innerText = inputString;
+
+    } else if (!isLetter(key.key)) {
+        return;
+
+    } else {
+        inputString += key.key;
+        document.getElementsByClassName("dynamicText")[document.getElementsByClassName("dynamicText").length - 1].innerText = inputString;
+    }
+
+});
