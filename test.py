@@ -1,0 +1,4 @@
+import requests
+
+r = requests.get("https://maps.googleapis.com/maps/api/staticmap?size=400x400&center=51.05956,3.82325&zoom=13&key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&path=weight:3%7Ccolor:red%7Cenc:gqsvHiviVo@aKU_C_@kCeCeMw@kDIk@Cs@?uAJ}AT}A`GsQbIyWX{Aj@ZlAvAdFtGjHtJf@Zj@N^BXA^K`EuBhAg@~@[V?r@H`CvAf@LnBRp@@tAq@j@a@`@_@bB{BVe@r@eCn@iCf@uAbAnFjA`FBlFW`G@|ADrAT~AhIb]b@`C|@fCb@xB`B|N}@`@w@j@OVQl@iDbOq@lDe@lEIjBC|C@tBqDbB]FyAGIDGHs@~DCp@?nAPzBxDtKPl@Hr@Ad@Gf@K^QV{@ZkHxCYeCKq@S}@a@@yGnDcE{QcAo@O][U}@J]J}@~@mHlIQ`DcAx@Qm@OQSgAMgBKkFKmBUeBOcFe@mE@QpJgFIKGSm@qD?g@No@`C}C`AmBb@kAb@uAVkADa@EaAMg@q@kAWWUMOAI@qCdAgLjAaJnAcBZ_@LEOMIOBAe@MiAw@qK")
+print(r.text)
