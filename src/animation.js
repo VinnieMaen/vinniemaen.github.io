@@ -1,6 +1,9 @@
 let cmdText = document.getElementById("cmdText");
 let cmdContainer = document.getElementsByClassName("cmdContainer")[0];
+let previewContainer = document.getElementsByClassName("previewContainer")[0];
 let dot = document.getElementsByClassName("dot")[0];
+let dot2 = document.getElementsByClassName("dot")[1];
+
 let curLine = 0;
 let prevCurline = -1;
 let curLineLength = 0;
@@ -11,6 +14,7 @@ let isTyping = false;
 
 let typeInterval;
 let lineInterval;
+let selectedImage;
 
 let fixed = "Vincent@Portfolio ~ %";
 
@@ -45,6 +49,16 @@ function close() {
     cmdContainer.className = "cmdContainerCollapsed1"
     setTimeout(() => {
         cmdContainer.className = "cmdContainerClosed"
+
+    }, 500);
+}
+
+function close2() {
+    dot2.style.display = "none";
+
+    previewContainer.className = "previewContainerCollapsed1"
+    setTimeout(() => {
+        previewContainer.className = "previewContainerClosed"
 
     }, 500);
 }
@@ -134,6 +148,11 @@ function execute(inputString) {
 }
 
 let loadingInterval = setInterval(() => {
+    previewContainer.className = "previewContainerClosed"
+    dot2.style.display = "none";
+    cmdContainer.className = "previewContainerClosed"
+    dot.style.display = "none";
+
     if (curLoading > 200) {
         clearInterval(loadingInterval);
         document.getElementsByClassName("loading")[0].style.visibility = "hidden"
@@ -187,8 +206,25 @@ document.getElementById("terminal").addEventListener("click", () => {
     }, 500);
 })
 
+/*
+document.getElementById("image").addEventListener("click", () => {
+    dot2.style.display = "block";
+
+    if (previewContainer.className == "previewContainer") return;
+
+    previewContainer.className = "previewContainerCollapsed1"
+    setTimeout(() => {
+        previewContainer.className = "previewContainer"
+            
+    }, 500);
+})*/
+
 document.getElementById("close").addEventListener("click", () => {
     close();
+})
+
+document.getElementById("close2").addEventListener("click", () => {
+    close2();
 })
 
 document.addEventListener("keydown", (key) => {
@@ -214,3 +250,70 @@ document.addEventListener("keydown", (key) => {
     }
 
 });
+
+let iconElement1 = document.getElementById("vinity1");
+let iconElement2 = document.getElementById("vinity2");
+let ignoringElements = [document.getElementById("vinity1")]
+let ignoringElements2 = [document.getElementById("vinity2")]
+
+ignoringElements.push(document.getElementsByClassName("icon")[0])
+ignoringElements.push(document.getElementsByClassName("iconText")[0])
+ignoringElements.push(document.getElementsByClassName("iconContainer")[0])
+
+ignoringElements2.push(document.getElementsByClassName("icon")[1])
+ignoringElements2.push(document.getElementsByClassName("iconText")[1])
+ignoringElements2.push(document.getElementsByClassName("iconContainer")[1])
+
+iconElement1.addEventListener("click", () => {
+    iconElement1.getElementsByTagName("a")[0].className = "iconTextSelected";
+    iconElement1.getElementsByTagName("div")[0].className = "iconContainerSelected"
+})
+
+iconElement2.addEventListener("click", () => {
+    iconElement2.getElementsByTagName("a")[0].className = "iconTextSelected";
+    iconElement2.getElementsByTagName("div")[0].className = "iconContainerSelected"
+})
+
+iconElement1.addEventListener("dblclick", () => {
+    dot2.style.display = "block";
+
+    if (previewContainer.className == "previewContainer") return;
+    let img = previewContainer.getElementsByTagName("img")[0];
+    img.src = "./img/Vinity1.png"
+
+    previewContainer.className = "previewContainerCollapsed1"
+    setTimeout(() => {
+        previewContainer.className = "previewContainer"
+
+    }, 500);
+})
+
+iconElement2.addEventListener("dblclick", () => {
+    dot2.style.display = "block";
+
+    if (previewContainer.className == "previewContainer") return;
+    let img2 = previewContainer.getElementsByTagName("img")[0];
+    img2.src = "./img/Vinity2.png"
+
+    previewContainer.className = "previewContainerCollapsed1"
+    setTimeout(() => {
+        previewContainer.className = "previewContainer"
+
+    }, 500);
+})
+
+document.addEventListener("click", (event) => {
+    var isClickInsideElement = ignoringElements.includes(event.target);
+    var isClickInsideElement2 = ignoringElements2.includes(event.target);
+
+    if (!isClickInsideElement) {
+        iconElement1.getElementsByTagName("a")[0].className = "iconText";
+        iconElement1.getElementsByTagName("div")[0].className = "iconContainer"
+
+    }
+
+    if (!isClickInsideElement2) {
+        iconElement2.getElementsByTagName("a")[0].className = "iconText";
+        iconElement2.getElementsByTagName("div")[0].className = "iconContainer"
+    }
+})
