@@ -142,6 +142,7 @@ let loadingInterval = setInterval(() => {
 
         setTimeout(() => {
             startWrite(true, "")
+            document.getElementById("hiddenInput").focus()
         }, 1000);
         curLoading = 0;
     } else {
@@ -159,10 +160,6 @@ document.getElementById("minimize").addEventListener("click", () => {
         cmdContainer.className = "cmdContainerCollapsed2"
 
     }, 500);
-})
-
-document.getElementsByClassName("cmdContainer")[0].addEventListener("click", () => {
-    prompt()
 })
 
 document.getElementById("terminal").addEventListener("click", () => {
