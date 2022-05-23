@@ -161,6 +161,10 @@ document.getElementById("minimize").addEventListener("click", () => {
     }, 500);
 })
 
+document.getElementsByClassName("cmdContainer")[0].addEventListener("click", () => {
+    prompt()
+})
+
 document.getElementById("terminal").addEventListener("click", () => {
     let cl = cmdContainer.className.toString();
     dot.style.display = "block";
