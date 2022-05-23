@@ -290,6 +290,7 @@ body {
     .cmdContainer {
         width: 80vw;
         height: 60vh;
+        cursor: pointer;
     }
 
     .taskBar {
