@@ -117,8 +117,8 @@ function execute(inputString) {
         })
 
     } else {
-        if (inputString == "exit") return close();
-        if (inputString == "clear") {
+        if (inputString.toLowerCase() == "exit") return close();
+        if (inputString.toLowerCase() == "clear") {
             cmdText.innerHTML = `<div id="cursor" class="cursor"></div>`;
             return startWrite(true, "");
         }
