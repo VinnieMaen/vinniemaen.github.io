@@ -114,7 +114,7 @@ function startWrite() {
                         clearInterval(lineInterval)
                     }
                 }, curLine % 2 == 0 ? 100 : 10)
-            }, curLine % 2 == 0 && curLine != 0 ? 2000 : 0)
+            }, curLine % 2 == 0 && curLine != 0 ? 5000 : 0)
         }
     }, 100)
 }
