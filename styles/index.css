@@ -105,7 +105,7 @@ body {
     background-color: black;
     overflow: hidden;
     width: 80vw;
-    height: 80vh;
+    height: 70vh;
     align-items: center;
     border-radius: 1vh;
     filter: drop-shadow(0px 6px 34px rgba(0, 0, 0, 0.5));
@@ -157,6 +157,7 @@ body {
 }
 
 .cmdHeader {
+    position: relative;
     display: flex;
     flex-direction: row;
     background-color: #EDEDED;
@@ -249,7 +250,7 @@ body {
 
 .taskBar {
     position: absolute;
-    bottom: 10px;
+    bottom: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
