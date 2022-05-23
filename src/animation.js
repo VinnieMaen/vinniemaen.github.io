@@ -163,7 +163,6 @@ document.getElementById("minimize").addEventListener("click", () => {
 
 document.getElementsByClassName("cmdContainer")[0].addEventListener("click", () => {
     document.getElementById("hiddenInput").focus()
-    alert()
 })
 
 document.getElementById("terminal").addEventListener("click", () => {
