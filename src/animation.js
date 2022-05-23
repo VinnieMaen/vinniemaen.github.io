@@ -180,7 +180,6 @@ document.getElementById("terminal").addEventListener("click", () => {
         cmdContainer.className = "cmdContainer"
         if (cl == "cmdContainerClosed") {
             startWrite(false, "Type help to get started!");
-            prompt()
             setTimeout(() => {
                 startWrite(true, "")
             }, 1000);
