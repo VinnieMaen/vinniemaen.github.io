@@ -250,7 +250,7 @@ body {
 
 .taskBar {
     position: absolute;
-    bottom: 20px;
+    bottom: 2%;
     display: flex;
     align-items: center;
     justify-content: center;
