@@ -105,7 +105,7 @@ body {
     background-color: black;
     overflow: hidden;
     width: 80vw;
-    height: 70vh;
+    height: 80vh;
     align-items: center;
     border-radius: 1vh;
     filter: drop-shadow(0px 6px 34px rgba(0, 0, 0, 0.5));
@@ -282,4 +282,16 @@ body {
     height: 5px;
     border-radius: 1000px;
     margin-bottom: 2px;
+}
+
+@media only screen and (max-width: 800px) {
+
+    .cmdContainer {
+        width: 80vw;
+        height: 60vh;
+    }
+
+    .taskBar {
+        margin-bottom: .1vh;
+    }
 }
