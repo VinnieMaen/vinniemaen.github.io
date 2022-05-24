@@ -151,19 +151,18 @@ let loadingInterval = setInterval(() => {
     previewContainer.className = "previewContainerClosed"
     dot2.style.display = "none";
 
+    curLine = 0;
+    prevCurline = -1;
+    curLineLength = 0;
+
+    cmdContainer.className = "cmdContainerClosed"
+    dot.style.display = "none";
 
     if (curLoading > 200) {
         clearInterval(loadingInterval);
         document.getElementsByClassName("loading")[0].style.visibility = "hidden"
         document.getElementsByClassName("loading")[0].style.opacity = 0
         curLoading = 0;
-
-        curLine = 0;
-        prevCurline = -1;
-        curLineLength = 0;
-
-        cmdContainer.className = "cmdContainerClosed"
-        dot.style.display = "none";
 
     } else {
         curLoading += randomIntFromInterval(0, 5);
