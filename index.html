@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <link
@@ -7,67 +7,72 @@
         rel="stylesheet">
     <link rel="stylesheet" href="./styles/index.css">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Vincents Portfolio</title>
 </head>
 
 <body>
-    <div class="loading">
-        <div class="loadingContainer">
-            <a class="loadingTitle">VM</a>
-            <div>
-                <div class="loadingBar"></div>
-                <div class="loadingBarFill"></div>
-            </div>
-        </div>
-    </div>
-    <div class="content">
-        <div id="cmdContainer" class="cmdContainer">
-            <div class="cmdHeader">
-                <div class="buttons">
-                    <div id="close" class="btn1"></div>
-                    <div id="minimize" class="btn2"></div>
-                    <div class="btn3"></div>
+    <nav></nav>
+    <main>
+        <div class="loading">
+            <div class="loadingContainer">
+                <a class="loadingTitle">VM</a>
+                <div>
+                    <div class="loadingBar"></div>
+                    <div class="loadingBarFill"></div>
                 </div>
-                <a class="cmdTitle">Vincents Portfolio</a>
-            </div>
-            <div id="cmdText" class="cmdText">
-                <div id="cursor" class="cursor"></div>
             </div>
         </div>
-        <div id="previewContainer" class="previewContainer">
-            <div class="cmdHeader">
-                <div class="buttons">
-                    <div id="close2" class="btn1"></div>
-                    <div id="minimize2" class="btn2"></div>
-                    <div class="btn3"></div>
+        <div class="content">
+            <div id="cmdContainer" class="cmdContainer">
+                <div class="cmdHeader">
+                    <div class="buttons">
+                        <div id="close" class="btn1"></div>
+                        <div id="minimize" class="btn2"></div>
+                        <div class="btn3"></div>
+                    </div>
+                    <a class="cmdTitle">Vincents Portfolio</a>
                 </div>
-                <a class="cmdTitle">Vincents Previous Projects</a>
+                <div id="cmdText" class="cmdText">
+                    <div id="cursor" class="cursor"></div>
+                </div>
             </div>
-            <img class="previewImg" src="./img/Vinity1.png">
+            <div id="previewContainer" class="previewContainer">
+                <div class="cmdHeader">
+                    <div class="buttons">
+                        <div id="close2" class="btn1"></div>
+                        <div id="minimize2" class="btn2"></div>
+                        <div class="btn3"></div>
+                    </div>
+                    <a class="cmdTitle">Vincents Previous Projects</a>
+                </div>
+                <img alt="Project Vinity Sneaker App" class="previewImg" src="./img/Vinity1.png">
+            </div>
+            <div id="vinity1" class="vinity1">
+                <div class="iconContainer">
+                    <img alt="Project Vinity Sneaker App" class="icon" src="./img/Vinity1.png">
+                </div>
+                <a class="iconText">Vinity_Project1.png</a>
+            </div>
+            <div id="vinity2" class="vinity2">
+                <div class="iconContainer">
+                    <img alt="Project Vinity Sneaker App" class="icon" src="./img/Vinity2.png">
+                </div>
+                <a class="iconText">Vinity_Project2.png</a>
+            </div>
+            <div class="taskBar">
+                <div class="logoContainer">
+                    <img alt="" id="terminal" class="terminal" src="./img/terminal.png">
+                    <div class="dot"></div>
+                </div>
+                <div class="logoContainer">
+                    <img alt="" id="image" class="image" src="./img/image.png">
+                    <div class="dot"></div>
+                </div>
+            </div>
         </div>
-        <div id="vinity1" class="vinity1">
-            <div class="iconContainer">
-                <img class="icon" src="./img/Vinity1.png">
-            </div>
-            <a class="iconText">Vinity_Project1.png</a>
-        </div>
-        <div id="vinity2" class="vinity2">
-            <div class="iconContainer">
-                <img class="icon" src="./img/Vinity2.png">
-            </div>
-            <a class="iconText">Vinity_Project2.png</a>
-        </div>
-        <div class="taskBar">
-            <div class="logoContainer">
-                <img id="terminal" class="terminal" src="./img/terminal.png">
-                <div class="dot"></div>
-            </div>
-            <div class="logoContainer">
-                <img id="image" class="image" src="./img/image.png">
-                <div class="dot"></div>
-            </div>
-        </div>
-    </div>
-    <input style="opacity: 0; position: absolute;" id="hiddenInput">
+    </main>
+    <footer></footer>
+    <input style="opacity: 0; position: absolute;" id="hiddenInput" placeholder="phoneInput">
     <script src="./src/animation.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </body>
