@@ -411,6 +411,26 @@ body {
 
 }
 
+.waves1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    right: 150px;
+    top: 10px;
+
+}
+
+.waves2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    right: 150px;
+    top: 150px;
+
+}
+
 .iconContainer {
     display: flex;
     flex-direction: column;
@@ -430,9 +450,36 @@ body {
     height: 90px;
 }
 
+.iconContainer2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 120px;
+    height: 90px;
+}
+
+.iconContainer2Selected {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff30;
+    width: 120px;
+    height: 90px;
+}
+
 .icon {
     height: 70px;
     width: 30px;
+    border-color: white;
+    border-width: 2px;
+    border-style: solid;
+}
+
+.icon2 {
+    height: 50px;
+    width: 80px;
     border-color: white;
     border-width: 2px;
     border-style: solid;
@@ -466,6 +513,6 @@ body {
 }
 
 .previewImg {
-    height: 95%;
-    width: auto;
+    max-width: 100%;
+    max-height: 100%;
 }

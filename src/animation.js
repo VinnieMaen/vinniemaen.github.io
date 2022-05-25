@@ -19,11 +19,12 @@ let selectedImage;
 let fixed = "Vincent@Portfolio ~ %";
 
 let functions = {
-    help: "The following commands are available: welcome | skills | projects | contact | clear | exit",
+    help: "The following commands are available: welcome | skills | experience | contact | languages | clear | exit",
     welcome: "Hello! My Name is Vincent. I am a 19 years old fullstack developer studying Industrial Engineering Computer Science at the KU Leuven.",
     skills: "I have experience in the following programming languages/frameworks: Java, ReactJS, React-Native, C++, Python, HTML + CSS and Vanilla JS.",
-    projects: "I have worked on a lot of projects in the passed which were Vinity Sneaker App, WavesAIO ReactJS Sneaker Bot, Discord Bots, Scraper Tools and my own Private Bot ILA.",
+    experience: "I have worked on a lot of projects in the passed which were Vinity Sneaker App, WavesAIO ReactJS Sneaker Bot, Discord Bots, Scraper Tools and my own Private Bot ILA.",
     contact: "Discord: VinnieMaen#1111 | Twitter: @VinnieMaenDev | GitHub: VinnieMaen",
+    languages: "I speak and write: Fluent Dutch, Fluent English, Basic French",
     clear: "clear",
     exit: "exit"
 }
@@ -257,6 +258,11 @@ let iconElement2 = document.getElementById("vinity2");
 let ignoringElements = [document.getElementById("vinity1")]
 let ignoringElements2 = [document.getElementById("vinity2")]
 
+let iconElement3 = document.getElementById("waves1");
+let iconElement4 = document.getElementById("waves2");
+let ignoringElements3 = [document.getElementById("waves1")]
+let ignoringElements4 = [document.getElementById("waves2")]
+
 ignoringElements.push(document.getElementsByClassName("icon")[0])
 ignoringElements.push(document.getElementsByClassName("iconText")[0])
 ignoringElements.push(document.getElementsByClassName("iconContainer")[0])
@@ -264,6 +270,14 @@ ignoringElements.push(document.getElementsByClassName("iconContainer")[0])
 ignoringElements2.push(document.getElementsByClassName("icon")[1])
 ignoringElements2.push(document.getElementsByClassName("iconText")[1])
 ignoringElements2.push(document.getElementsByClassName("iconContainer")[1])
+
+ignoringElements3.push(document.getElementsByClassName("icon2")[0])
+ignoringElements3.push(document.getElementsByClassName("iconText")[2])
+ignoringElements3.push(document.getElementsByClassName("iconContainer2")[0])
+
+ignoringElements4.push(document.getElementsByClassName("icon2")[1])
+ignoringElements4.push(document.getElementsByClassName("iconText")[3])
+ignoringElements4.push(document.getElementsByClassName("iconContainer2")[1])
 
 iconElement1.addEventListener("click", () => {
     iconElement1.getElementsByTagName("a")[0].className = "iconTextSelected";
@@ -303,18 +317,67 @@ iconElement2.addEventListener("dblclick", () => {
     }, 500);
 })
 
+iconElement3.addEventListener("click", () => {
+    iconElement3.getElementsByTagName("a")[0].className = "iconTextSelected";
+    iconElement3.getElementsByTagName("div")[0].className = "iconContainer2Selected"
+})
+
+iconElement4.addEventListener("click", () => {
+    iconElement4.getElementsByTagName("a")[0].className = "iconTextSelected";
+    iconElement4.getElementsByTagName("div")[0].className = "iconContainer2Selected"
+})
+
+iconElement3.addEventListener("dblclick", () => {
+    dot2.style.display = "block";
+
+    if (previewContainer.className == "previewContainer") return;
+    let img = previewContainer.getElementsByTagName("img")[0];
+    img.src = "./img/Waves1.png"
+
+    previewContainer.className = "previewContainerCollapsed1"
+    setTimeout(() => {
+        previewContainer.className = "previewContainer"
+
+    }, 500);
+})
+
+iconElement4.addEventListener("dblclick", () => {
+    dot2.style.display = "block";
+
+    if (previewContainer.className == "previewContainer") return;
+    let img2 = previewContainer.getElementsByTagName("img")[0];
+    img2.src = "./img/Waves2.png"
+
+    previewContainer.className = "previewContainerCollapsed1"
+    setTimeout(() => {
+        previewContainer.className = "previewContainer"
+
+    }, 500);
+})
+
 document.addEventListener("click", (event) => {
     var isClickInsideElement = ignoringElements.includes(event.target);
     var isClickInsideElement2 = ignoringElements2.includes(event.target);
-
+    var isClickInsideElement3 = ignoringElements3.includes(event.target);
+    var isClickInsideElement4 = ignoringElements4.includes(event.target);
+    
     if (!isClickInsideElement) {
         iconElement1.getElementsByTagName("a")[0].className = "iconText";
         iconElement1.getElementsByTagName("div")[0].className = "iconContainer"
-
     }
 
     if (!isClickInsideElement2) {
         iconElement2.getElementsByTagName("a")[0].className = "iconText";
         iconElement2.getElementsByTagName("div")[0].className = "iconContainer"
+    }
+
+    if (!isClickInsideElement3) {
+        iconElement3.getElementsByTagName("a")[0].className = "iconText";
+        iconElement3.getElementsByTagName("div")[0].className = "iconContainer2"
+    }
+
+    if (!isClickInsideElement4) {
+        iconElement4.getElementsByTagName("a")[0].className = "iconText";
+        iconElement4.getElementsByTagName("div")[0].className = "iconContainer2"
     }
 })
