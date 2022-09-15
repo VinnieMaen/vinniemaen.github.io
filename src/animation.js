@@ -20,7 +20,7 @@ let fixed = "Vincent@Portfolio ~ %";
 
 let functions = {
     help: "The following commands are available: welcome | skills | experience | contact | languages | clear | exit",
-    welcome: "Hello! My Name is Vincent. I am a 19 years old fullstack developer studying Industrial Engineering Computer Science at the KU Leuven.",
+    welcome: "Hello! My Name is Vincent. I am a 20 years old fullstack developer studying Industrial Engineering Computer Science at the KU Leuven.",
     skills: "I have experience in the following programming languages/frameworks: Java, ReactJS, React-Native, C++, Python, HTML + CSS and Vanilla JS.",
     experience: "I have worked on a lot of projects in the passed which were Vinity Sneaker App, Vinity NFT Extension, Quickfill Autofill Extension, WavesAIO ReactJS Sneaker Bot, Discord Bots, Scraper Tools and my own Private Bot ILA.",
     contact: "Discord: VinnieMaen#1111 | Twitter: @VinnieMaenDev | GitHub: VinnieMaen",
